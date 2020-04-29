@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {getManager} from "typeorm";
+import {getRepository} from "typeorm";
 import {Post} from "../entity/Post";
 
 /**
@@ -8,7 +8,7 @@ import {Post} from "../entity/Post";
 export async function postGetAllAction(request: Request, response: Response) {
 
     // get a post repository to perform operations with post
-    const postRepository = getManager().getRepository(Post);
+    const postRepository = getRepository(Post);
 
     // load a post by a given post id
     const posts = await postRepository.find();
