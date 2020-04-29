@@ -2,22 +2,22 @@
   "type": "mysql",
   "host": "localhost",
   "port": 3306,
-  "username": "test",
-  "password": "test",
-  "database": "test",
+  "username": "lisa",
+  "password": "veelplezier",
+  "database": "turnips",
   "synchronize": true,
   "entities": [
-    "src/entity/*.js"
+    "dist/src/entity/*.js"
   ],
   "subscribers": [
-    "src/subscriber/*.js"
+    "dist/src/subscriber/*.js"
   ],
   "migrations": [
-    "src/migration/*.js"
+    "dist/src/migration/*.js"
   ],
   "cli": {
-    "entitiesDir": "src/entity",
-    "migrationsDir": "src/migration",
-    "subscribersDir": "src/subscriber"
+    "entitiesDir": "dist/src/entity",
+    "migrationsDir": "dist/src/migration",
+    "subscribersDir": "dist/src/subscriber"
   }
 }

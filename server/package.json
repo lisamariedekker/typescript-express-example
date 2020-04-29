@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "tsc && node dist/src/index.js"
+  },
   "name": "typeorm-typescript-express-example",
   "version": "0.0.1",
   "description": "Example how to use Express and TypeORM with TypeScript.",
@@ -34,8 +37,5 @@
     "express": "^4.16.3",
     "mysql": "^2.15.0",
     "typeorm": "^0.2.0"
-  },
-  "scripts": {
-    "start": "tsc && node src/index.js"
   }
 }
