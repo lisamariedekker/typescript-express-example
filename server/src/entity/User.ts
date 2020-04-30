@@ -26,7 +26,7 @@ export class User {
     // @Column()
     // password: string;
 
-    @Column({type: "enum", enum: NativeFruit})
+    @Column({type: "enum", enum: NativeFruit, nullable: true})
     nativeFruit: NativeFruit
 
     @Column()
