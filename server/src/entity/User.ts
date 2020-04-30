@@ -3,6 +3,14 @@ import { Group } from "./Group";
 import { TurnipPrice } from "./TurnipPrice";
 import { Transaction } from "./Transaction";
 
+export enum NativeFruit {
+  APPLES = "Apples",
+  PEARS = "Pears",
+  ORANGES = "Oranges",
+  CHERRIES = "Cherries",
+  PEACHES = "Peaches"
+}
+
 @Entity()
 export class User {
 
@@ -17,6 +25,9 @@ export class User {
 
     // @Column()
     // password: string;
+
+    @Column({type: "enum", enum: NativeFruit})
+    nativeFruit: NativeFruit
 
     @Column()
     islandName: string;
