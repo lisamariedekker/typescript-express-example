@@ -8,10 +8,12 @@ import {Post} from "../entity/Post";
 export async function postGetAllAction(request: Request, response: Response) {
 
     // get a post repository to perform operations with post
-    const postRepository = getRepository(Post);
+    const posts = await getRepository(Post)
+      .createQueryBuilder("post")
+      .getMany();
 
-    // load a post by a given post id
-    const posts = await postRepository.find();
+    // // load a post by a given post id
+    // const posts = await postRepository.find();
 
     // return loaded posts
     response.send(posts);
