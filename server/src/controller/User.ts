@@ -4,16 +4,34 @@ import { User } from "../entity/User";
 
 export async function createUser(request: Request, response: Response) {
 
-    const userRepository = getRepository(User);
+  const userRepository = getRepository(User);
 
-    const user = request.body
-    const newUser = userRepository.create(user);
+  const user = request.body
+  const newUser = userRepository.create(user);
 
-    // save received post
-    await userRepository.save(newUser);
+  await userRepository.save(newUser);
 
-    // return saved post back
-    response.send(newUser);
+  response.send(newUser);
+}
+
+export async function updateUser(request: Request, response: Response) {
+
+  const userRepository = getRepository(User);
+
+  const user = request.body
+  await userRepository.save(user);
+
+  response.send(user);
+}
+
+export async function deleteUser(request: Request, response: Response) {
+
+  const userRepository = getRepository(User)
+
+  const user = request.body.id
+  await userRepository.delete(user)
+  
+  response.send(user)
 }
 
 export async function getUsers(request: Request, response: Response) {
