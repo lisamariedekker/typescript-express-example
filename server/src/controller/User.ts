@@ -19,7 +19,7 @@ export async function updateUser(request: Request, response: Response) {
   const userRepository = getRepository(User);
 
   const user = request.body
-  await userRepository.save(user);
+  await userRepository.update(user.id, user);
 
   response.send(user);
 }
@@ -45,10 +45,20 @@ export async function getUsers(request: Request, response: Response) {
 
 export async function getUser(request: Request, response: Response) {
 
-  const user = await getRepository(User)
-    .createQueryBuilder("user")
-    .where("user.id = :id OR user.name = :name", { id: request.body.id, name: request.body.name})
-    .getOne();
+  const userRepository = await getRepository(User)
+
+  const user = await userRepository.find({
+    where: [
+      { id: request.params.id },
+      { name: request.params.id }
+    ] 
+  });
+
+  if (!user) {
+    response.status(404);
+    response.end();
+    return;
+  }
 
   response.send(user);
 }
