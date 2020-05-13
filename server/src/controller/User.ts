@@ -38,6 +38,7 @@ export async function getUsers(request: Request, response: Response) {
 
   const users = await getRepository(User)
     .createQueryBuilder("user")
+    .leftJoinAndSelect("user.prices", "prices")
     .getMany();
 
   response.send(users);
@@ -51,7 +52,7 @@ export async function getUser(request: Request, response: Response) {
     where: [
       { id: request.params.id },
       { name: request.params.id }
-    ] 
+    ], 
   });
 
   if (!user) {
